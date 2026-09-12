@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Secure checkout for TTU Marketplace.">
+  <title>Checkout | TTU Marketplace</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Graduate&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="payment.css">
+  <script src="products.js" defer></script>
+  <script src="payment.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="listings.html" aria-label="TTU Marketplace home">
+      <span class="wordmark-ttu">TTU</span>
+      <span class="wordmark-marketplace">MARKETPLACE</span>
+    </a>
+    <div class="secure-header">
+      <svg viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+      SECURE CHECKOUT
+    </div>
+  </header>
+
+  <main class="checkout-shell">
+    <a class="back-link" id="backLink" href="listings.html"><span>←</span> Back to item</a>
+
+    <div class="checkout-heading">
+      <p>COMPLETE YOUR PURCHASE</p>
+      <h1>Checkout</h1>
+    </div>
+
+    <div class="checkout-layout">
+      <form class="payment-card" id="paymentForm" novalidate>
+        <div class="section-heading">
+          <span>01</span>
+          <div><p>PAYMENT</p><h2>Choose how you’ll pay</h2></div>
+        </div>
+
+        <div class="payment-methods" role="radiogroup" aria-label="Payment method">
+          <label class="method selected">
+            <input type="radio" name="paymentMethod" value="card" checked>
+            <svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></svg>
+            <span><strong>Credit or debit card</strong><small>Visa, Mastercard, Discover</small></span>
+            <i></i>
+          </label>
+          <label class="method">
+            <input type="radio" name="paymentMethod" value="meetup">
+            <svg viewBox="0 0 24 24"><path d="M12 21s7-5.1 7-12a7 7 0 1 0-14 0c0 6.9 7 12 7 12Z"/><circle cx="12" cy="9" r="2.3"/></svg>
+            <span><strong>Pay at meetup</strong><small>Pay the seller in person</small></span>
+            <i></i>
+          </label>
+        </div>
+
+        <div id="cardFields">
+          <button class="express-button" id="expressButton" type="button"><span>Pay</span> Faster checkout</button>
+          <div class="divider"><span>OR PAY WITH CARD</span></div>
+
+          <div class="field full-width">
+            <label for="cardName">NAME ON CARD</label>
+            <input id="cardName" name="cardName" type="text" placeholder="" autocomplete="cc-name">
+            <small class="error" id="cardNameError"></small>
+          </div>
+
+          <div class="field full-width">
+            <label for="cardNumber">CARD NUMBER</label>
+            <div class="input-with-icon">
+              <input id="cardNumber" name="cardNumber" type="text" inputmode="numeric" maxlength="19" placeholder="1234 5678 9012 3456" autocomplete="cc-number">
+              <svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+            </div>
+            <small class="error" id="cardNumberError"></small>
+          </div>
+
+          <div class="field-grid">
+            <div class="field">
+              <label for="expiry">EXPIRATION DATE</label>
+              <input id="expiry" name="expiry" type="text" inputmode="numeric" maxlength="5" placeholder="MM/YY" autocomplete="cc-exp">
+              <small class="error" id="expiryError"></small>
+            </div>
+            <div class="field">
+              <label for="cvv">SECURITY CODE</label>
+              <div class="input-with-icon">
+                <input id="cvv" name="cvv" type="password" inputmode="numeric" maxlength="4" placeholder="CVV" autocomplete="cc-csc">
+                <button id="cvvToggle" type="button" aria-label="Show security code">SHOW</button>
+              </div>
+              <small class="error" id="cvvError"></small>
+            </div>
+          </div>
+
+          <div class="field full-width">
+            <label for="zipCode">BILLING ZIP CODE</label>
+            <input id="zipCode" name="zipCode" type="text" inputmode="numeric" maxlength="5" placeholder="79409" autocomplete="postal-code">
+            <small class="error" id="zipCodeError"></small>
+          </div>
+        </div>
+
+        <div class="meetup-fields hidden" id="meetupFields">
+          <div class="meetup-banner">
+            <svg viewBox="0 0 24 24"><path d="M12 21s7-5.1 7-12a7 7 0 1 0-14 0c0 6.9 7 12 7 12Z"/><circle cx="12" cy="9" r="2.3"/></svg>
+            <div><strong>Payment will not be collected online.</strong><p>You and the seller will arrange a public TTU campus meetup and decide how payment is exchanged.</p></div>
+          </div>
+        </div>
+
+        <label class="agreement">
+          <input id="agreement" type="checkbox">
+          <span></span>
+          <p>I understand this purchase is from another TTU community member and agree to the marketplace terms.</p>
+        </label>
+        <small class="error agreement-error" id="agreementError"></small>
+
+        <button class="pay-button" id="payButton" type="submit">
+          <span id="payButtonText">Pay $45.00</span>
+          <svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
+
+        <p class="security-note">
+          <svg viewBox="0 0 24 24"><path d="M12 2 21 6v7c0 5-3.5 8.2-9 10-5.5-1.8-9-5-9-10V6Z"/><path d="m8.5 12 2.3 2.3 4.8-5"/></svg>
+          This demo does not transmit or store payment information.
+        </p>
+      </form>
+
+      <aside class="order-card">
+        <div class="order-title"><p>YOUR ORDER</p><a href="product.html" id="editLink">Edit</a></div>
+        <div id="orderItems">
+          <div class="order-item">
+            <img id="orderImage" src="assets/calculator-front.png" alt="TI-84 Plus graphing calculator">
+            <div>
+              <h3 id="orderTitle">TI-84 Plus Graphing Calculator</h3>
+              <p id="orderMeta">Like new · Quantity 1</p>
+              <small id="orderSeller">Seller: Alex Morgan</small>
+            </div>
+            <strong id="orderPrice">$45.00</strong>
+          </div>
+        </div>
+
+        <div class="pickup-box">
+          <svg viewBox="0 0 24 24"><path d="M12 21s7-5.1 7-12a7 7 0 1 0-14 0c0 6.9 7 12 7 12Z"/><circle cx="12" cy="9" r="2.3"/></svg>
+          <div><span>PICKUP METHOD</span><strong>TTU campus meetup</strong><small>Coordinate the location with the seller</small></div>
+        </div>
+
+        <div class="totals">
+          <div><span>Subtotal</span><strong id="subtotalAmount">$45.00</strong></div>
+          <div><span>Marketplace fee</span><strong>$0.00</strong></div>
+          <div class="total"><span>Total</span><strong id="totalAmount">$45.00</strong></div>
+        </div>
+
+        <div class="protection-box">
+          <svg viewBox="0 0 24 24"><path d="M12 2 21 6v7c0 5-3.5 8.2-9 10-5.5-1.8-9-5-9-10V6Z"/><path d="m8.5 12 2.3 2.3 4.8-5"/></svg>
+          <div><strong>Community safety reminder</strong><p>Meet in a public place, inspect the item, and never share your TTU password.</p></div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

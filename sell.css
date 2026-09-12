@@ -1,0 +1,274 @@
+.sell-page {
+  width: min(780px, calc(100% - 48px));
+}
+
+.sell-card {
+  margin-top: 18px;
+  padding: 32px 32px 28px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.sell-heading {
+  margin-bottom: 28px;
+}
+
+.sell-kicker {
+  color: var(--red);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.sell-heading h1 {
+  margin-top: 6px;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.sell-subtitle {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.form-section {
+  margin-bottom: 22px;
+}
+
+.section-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.section-top .form-label {
+  margin-bottom: 0;
+}
+
+.photo-limit {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.photo-box {
+  position: relative;
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+  background: var(--input);
+  color: var(--muted);
+  text-align: center;
+}
+
+.photo-add {
+  cursor: pointer;
+}
+
+.photo-add:hover {
+  border-color: var(--red);
+  color: var(--red);
+}
+
+.photo-box svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+}
+
+.photo-box strong {
+  margin-top: 8px;
+  color: var(--text);
+  font-size: 12px;
+}
+
+.photo-add:hover strong {
+  color: var(--red);
+}
+
+.photo-box small {
+  margin-top: 4px;
+  font-size: 10px;
+}
+
+.photo-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#photo-input {
+  display: none;
+}
+
+.field,
+.price-wrap,
+.location-wrap,
+textarea {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--white);
+}
+
+.field,
+.price-wrap input,
+.location-wrap .field {
+  height: 44px;
+  padding: 0 12px;
+  color: var(--text);
+  outline: none;
+}
+
+.field:focus,
+.price-wrap:focus-within,
+.location-wrap:focus-within,
+textarea:focus {
+  border-color: var(--red);
+  box-shadow: 0 0 0 3px rgba(204, 0, 0, 0.1);
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 16px;
+}
+
+.price-wrap {
+  display: flex;
+  overflow: hidden;
+}
+
+.price-wrap span {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  border-right: 1px solid var(--border);
+  background: var(--input);
+  font-weight: 700;
+}
+
+.price-wrap input {
+  flex: 1;
+  border: 0;
+  background: transparent;
+  outline: none;
+}
+
+.condition-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 22px;
+}
+
+.condition-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.condition-option input {
+  accent-color: var(--red);
+}
+
+.text-btn {
+  border: 0;
+  background: transparent;
+  color: var(--red);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.description-box textarea {
+  min-height: 120px;
+  padding: 12px;
+  resize: vertical;
+  outline: none;
+}
+
+.location-wrap {
+  position: relative;
+}
+
+.location-wrap svg {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: var(--muted);
+  stroke-width: 1.8;
+  transform: translateY(-50%);
+}
+
+.location-wrap .field {
+  padding-left: 36px;
+}
+
+.form-error {
+  margin-bottom: 14px;
+  color: var(--red);
+  font-size: 14px;
+}
+
+.list-btn {
+  width: 100%;
+  height: 48px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--red);
+  color: var(--white);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.list-btn:hover {
+  background: var(--red-hover);
+}
+
+@media (max-width: 760px) {
+  .sell-page {
+    width: calc(100% - 32px);
+  }
+
+  .sell-card {
+    padding: 22px 16px;
+  }
+
+  .photo-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .two-col {
+    grid-template-columns: 1fr;
+  }
+}

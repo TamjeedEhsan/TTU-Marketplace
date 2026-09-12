@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sell an Item — TTU Marketplace</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="listings.css" />
+    <link rel="stylesheet" href="sell.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <a class="logo" href="listings.html">
+        <span class="logo-ttu">TTU</span>
+        <span class="logo-name">MARKETPLACE</span>
+      </a>
+
+      <div class="search-bar">
+        <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"></circle>
+          <path d="M20 20l-3.5-3.5"></path>
+        </svg>
+        <input type="search" placeholder="Search for textbooks, furniture, electronics..." disabled />
+      </div>
+
+      <div class="nav-actions">
+        <button class="icon-btn" type="button" aria-label="Favorites">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 20s-7-4.4-9.2-8.2C1.2 9.2 2.2 6 5.2 5.3c1.8-.4 3.4.4 4.3 1.8C10.4 5.7 12 4.9 13.8 5.3c3 .7 4 3.9 2.4 6.5C19 15.6 12 20 12 20z"></path>
+          </svg>
+        </button>
+        <button class="icon-btn" type="button" aria-label="Messages">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 6h16v10H7l-3 3V6z"></path>
+          </svg>
+        </button>
+        <img class="avatar" src="assets/images/avatar.jpg" alt="Your profile" />
+        <a class="sell-btn" href="listings.html">Back to listings</a>
+      </div>
+    </header>
+
+    <main class="page sell-page">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="listings.html">Home</a>
+        <span class="crumb-sep">&gt;</span>
+        <span>Sell an Item</span>
+      </nav>
+
+      <section class="sell-card">
+        <header class="sell-heading">
+          <p class="sell-kicker">TTU Marketplace</p>
+          <h1>List an Item</h1>
+          <p class="sell-subtitle">Sell something to a fellow Red Raider.</p>
+        </header>
+
+        <form id="listing-form" novalidate>
+          <div class="form-section">
+            <div class="section-top">
+              <label class="form-label">Photos</label>
+              <span class="photo-limit">Add up to 5 photos</span>
+            </div>
+            <div class="photo-grid" id="photo-grid">
+              <label class="photo-box photo-add" for="photo-input">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 5v14M5 12h14"></path>
+                </svg>
+                <strong>Add Photo</strong>
+                <small>Click to upload</small>
+              </label>
+              <div class="photo-box preview-slot"></div>
+              <div class="photo-box preview-slot"></div>
+              <div class="photo-box preview-slot"></div>
+              <div class="photo-box preview-slot"></div>
+            </div>
+            <input id="photo-input" type="file" accept="image/*" multiple />
+          </div>
+
+          <div class="form-section">
+            <label class="form-label" for="item-title">Item Title</label>
+            <input
+              class="field"
+              id="item-title"
+              type="text"
+              placeholder="What are you selling?"
+              required
+            />
+          </div>
+
+          <div class="form-section two-col">
+            <div>
+              <label class="form-label" for="price">Price</label>
+              <div class="price-wrap">
+                <span>$</span>
+                <input
+                  id="price"
+                  type="number"
+                  min="0"
+                  step="0.01"
+                  placeholder="0.00"
+                  required
+                />
+              </div>
+            </div>
+            <div>
+              <label class="form-label" for="category">Category</label>
+              <select class="field" id="category" required>
+                <option value="">Select a category</option>
+                <option>Textbooks</option>
+                <option>Furniture</option>
+                <option>Electronics</option>
+                <option>Clothing</option>
+                <option>Bikes</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <p class="form-label">Condition</p>
+            <div class="condition-group">
+              <label class="condition-option">
+                <input type="radio" name="condition" value="New" required />
+                New
+              </label>
+              <label class="condition-option">
+                <input type="radio" name="condition" value="Like New" />
+                Like New
+              </label>
+              <label class="condition-option">
+                <input type="radio" name="condition" value="Good" />
+                Good
+              </label>
+              <label class="condition-option">
+                <input type="radio" name="condition" value="Fair" />
+                Fair
+              </label>
+              <label class="condition-option">
+                <input type="radio" name="condition" value="For Parts" />
+                For Parts
+              </label>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <div class="section-top">
+              <label class="form-label" for="description">Description</label>
+              <button class="text-btn" id="description-toggle" type="button">
+                + Add description
+              </button>
+            </div>
+            <div class="description-box" id="description-box" hidden>
+              <textarea
+                id="description"
+                placeholder="Tell buyers more about your item..."
+              ></textarea>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <label class="form-label" for="location">Meetup Location</label>
+            <div class="location-wrap">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"></path>
+                <circle cx="12" cy="10" r="2.2"></circle>
+              </svg>
+              <input
+                class="field"
+                id="location"
+                type="text"
+                placeholder="Student Union Building, TTU, Lubbock, TX"
+                required
+              />
+            </div>
+          </div>
+
+          <p class="form-error" id="form-error" hidden></p>
+
+          <button class="list-btn" type="submit">List Item</button>
+        </form>
+      </section>
+    </main>
+
+    <script src="sell.js"></script>
+  </body>
+</html>

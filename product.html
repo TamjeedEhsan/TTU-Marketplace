@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="View an item listed on TTU Marketplace.">
+  <title>Listing | TTU Marketplace</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Graduate&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="product.css">
+  <script src="products.js" defer></script>
+  <script src="product.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="listings.html" aria-label="TTU Marketplace home">
+      <span class="wordmark-ttu">TTU</span>
+      <span class="wordmark-marketplace">MARKETPLACE</span>
+    </a>
+    <nav aria-label="Main navigation">
+      <a href="listings.html">Browse</a>
+      <a href="sell.html">Sell</a>
+      <button class="icon-button" type="button" aria-label="Saved listings">
+        <svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z"/></svg>
+      </button>
+      <a class="cart-button" href="cart.html" aria-label="Shopping cart">
+        <svg viewBox="0 0 24 24"><circle cx="9" cy="20" r="1"/><circle cx="19" cy="20" r="1"/><path d="M3 4h2l2.4 11h11.4l2-8H6"/></svg>
+        <span id="cartCount">0</span>
+      </a>
+      <button class="avatar" type="button" aria-label="Your profile">NS</button>
+    </nav>
+  </header>
+
+  <main class="page-shell">
+    <a class="back-link" href="listings.html">
+      <span>←</span> Back to marketplace
+    </a>
+
+    <section class="product-layout" id="product-layout">
+      <div class="gallery-column">
+        <div class="main-image-wrap">
+          <button class="save-button" id="saveButton" type="button" aria-label="Save this item">
+            <svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z"/></svg>
+          </button>
+          <img id="mainProductImage" src="" alt="">
+          <span class="image-counter" id="imageCounter">1 / 1</span>
+        </div>
+
+        <div class="thumbnail-row" id="thumbnailRow" aria-label="Product images"></div>
+
+        <article class="description-card">
+          <p class="section-label">DESCRIPTION</p>
+          <h2>About this item</h2>
+          <div id="descriptionCopy"></div>
+        </article>
+      </div>
+
+      <aside class="purchase-column">
+        <div class="category-row">
+          <span class="category" id="productCategory">ELECTRONICS</span>
+          <span class="condition" id="productCondition">LIKE NEW</span>
+        </div>
+
+        <h1 id="productTitle">Listing</h1>
+        <p class="listing-meta" id="listingMeta"></p>
+        <p class="price" id="productPrice"></p>
+        <p class="retail-note" id="retailNote"></p>
+
+        <div class="seller-card">
+          <div class="seller-avatar" id="sellerAvatar">TS</div>
+          <div class="seller-info">
+            <span>SELLER</span>
+            <strong id="sellerName">TTU Student <b>✓</b></strong>
+            <small id="sellerMeta">Verified Red Raider</small>
+          </div>
+          <button type="button" id="messageButton">Message</button>
+        </div>
+
+        <div class="meetup-note">
+          <svg viewBox="0 0 24 24"><path d="M12 21s7-5.1 7-12a7 7 0 1 0-14 0c0 6.9 7 12 7 12Z"/><circle cx="12" cy="9" r="2.3"/></svg>
+          <div><strong>Campus pickup</strong><small>Meet at an agreed public location on TTU campus.</small></div>
+        </div>
+
+        <div class="quantity-row">
+          <span>Quantity</span>
+          <div class="stepper">
+            <button id="decreaseQuantity" type="button" aria-label="Decrease quantity">−</button>
+            <output id="quantity" aria-live="polite">1</output>
+            <button id="increaseQuantity" type="button" aria-label="Increase quantity">+</button>
+          </div>
+        </div>
+
+        <button class="primary-button" id="addToCart" type="button">
+          <svg viewBox="0 0 24 24"><circle cx="9" cy="20" r="1"/><circle cx="19" cy="20" r="1"/><path d="M3 4h2l2.4 11h11.4l2-8H6"/></svg>
+          Add to cart
+        </button>
+        <div class="or-divider"><span>OR</span></div>
+        <a class="checkout-button" id="checkoutButton" href="payment.html">Check out now <span>→</span></a>
+
+        <p class="safety-line">
+          <svg viewBox="0 0 24 24"><path d="M12 2 21 6v7c0 5-3.5 8.2-9 10-5.5-1.8-9-5-9-10V6Z"/><path d="m8.5 12 2.3 2.3 4.8-5"/></svg>
+          Buy safely. Meet in public and inspect the item first.
+        </p>
+      </aside>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

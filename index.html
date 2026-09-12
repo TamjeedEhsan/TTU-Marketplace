@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Log in to the TTU Marketplace.">
+  <title>Matador Marketplace | Log In</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="login-page">
+    <section class="campus-panel" aria-label="TTU Marketplace introduction"></section>
+
+    <section class="login-panel">
+      <div class="top-message" aria-hidden="true">
+        <span>GOOD FINDS<br>BRIGHTER TOMORROWS</span><i></i>
+      </div>
+
+      <article class="login-card">
+        <header class="card-header">
+          <img class="ttu-logo" src="assets/ttu-logo.png" alt="Texas Tech University logo">
+          <h1>Welcome Back</h1>
+          <p>LOG IN TO YOUR TTU MARKETPLACE ACCOUNT</p>
+        </header>
+
+        <form id="loginForm" novalidate>
+          <div class="form-group">
+            <label for="email">TTU EMAIL</label>
+            <div class="input-wrap">
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 6.5h18v12H3z"/><path d="m3.5 7 8.5 6 8.5-6"/></svg>
+              <input id="email" name="email" type="email" placeholder="name@ttu.edu" autocomplete="email" required>
+            </div>
+            <p class="field-error" id="emailError"></p>
+          </div>
+
+          <div class="form-group password-group">
+            <label for="password">PASSWORD</label>
+            <div class="input-wrap">
+              <svg aria-hidden="true" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="11" rx="1"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v3"/></svg>
+              <input id="password" name="password" type="password" placeholder="Enter your password" autocomplete="current-password" required>
+              <button class="password-toggle" id="passwordToggle" type="button" aria-label="Show password">
+                <svg class="eye-open" aria-hidden="true" viewBox="0 0 24 24"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="2.5"/></svg>
+                <svg class="eye-closed" aria-hidden="true" viewBox="0 0 24 24"><path d="M3 3l18 18M10.6 6.2A10.4 10.4 0 0 1 12 6c6.5 0 10 6 10 6a17 17 0 0 1-2.1 2.8M6.5 6.5C3.6 8.3 2 12 2 12s3.5 6 10 6c1.4 0 2.6-.3 3.7-.7M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg>
+              </button>
+            </div>
+            <p class="field-error" id="passwordError"></p>
+          </div>
+
+          <div class="form-options">
+            <label class="remember"><input id="remember" type="checkbox" checked><span></span>Keep me logged in</label>
+            <a href="#" id="forgotLink">Forgot password?</a>
+          </div>
+
+          <button class="login-button" type="submit">Log In <span>→</span></button>
+
+          <div class="divider"><span>OR</span></div>
+
+          <button class="google-button" id="googleButton" type="button">
+            <span class="google-g">G</span> Continue with TTU e-raider Account
+          </button>
+
+          <p class="signup-copy">Don’t have an account? <a href="#" id="createLink">Create one</a></p>
+
+          <aside class="students-only">
+            <svg aria-hidden="true" viewBox="0 0 32 38"><path d="M16 2 29 7v10c0 9-5.3 15-13 19C8.3 32 3 26 3 17V7Z"/><path d="m11 18 3.4 3.4L22 14"/></svg>
+            <div><strong>TTU Students Only</strong><small>You must use a valid @ttu.edu email to sign up.</small></div>
+          </aside>
+        </form>
+      </article>
+
+      <div class="bottom-message" aria-hidden="true"><span>BUY. SELL. CONNECT.</span><i></i></div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
