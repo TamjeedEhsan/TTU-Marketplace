@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Your TTU Marketplace profile, listings, purchases, and saved items.">
+  <title>Profile | TTU Marketplace</title>
+  <link rel="stylesheet" href="profile.css">
+  <script src="utils.js" defer></script>
+  <script src="profile.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand-row">
+      <a class="brand" href="listings.html">
+        <img src="assets/ttu-logo.png" alt="Texas Tech Double T logo">
+        <span><b>TTU</b> MARKETPLACE</span>
+      </a>
+      <nav class="main-nav">
+        <a href="listings.html">BUY</a>
+        <a href="sell.html">SELL</a>
+        <a href="listings.html">CONNECT</a>
+      </nav>
+    </div>
+    <label class="search-wrap">
+      <span class="search-icon" aria-hidden="true">⌕</span>
+      <input id="searchInput" type="search" placeholder="Search for items, categories, or keywords...">
+    </label>
+    <div class="header-actions">
+      <a class="icon-btn" href="#saved-items" aria-label="Saved items">♡</a>
+      <a class="icon-btn" href="cart.html" aria-label="Shopping cart">◯</a>
+      <button class="profile-chip" type="button" aria-current="page">
+        <span class="avatar-mini">JD</span>
+        <span>JOHN DOE</span>
+        <span aria-hidden="true">⌄</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <div class="top-line">
+      <a class="back-link" href="listings.html">← &nbsp; BACK TO HOME</a>
+      <div class="page-kicker">MY PROFILE <span></span></div>
+    </div>
+    <aside class="left-note">Red Raiders<br>Support<br>Red Raiders<span></span></aside>
+    <aside class="right-note">GOOD<br>FINDS<br>BRIGHTER<br>TOMORROWS<span></span></aside>
+
+    <section class="profile-card card">
+      <div class="avatar-large">JD</div>
+      <div class="profile-copy">
+        <h1>John Doe</h1>
+        <p class="email">john.doe@ttu.edu</p>
+        <p class="profile-meta">Computer Science <span>|</span> Junior</p>
+        <p class="member">▣ &nbsp; Member since August 2024</p>
+      </div>
+      <button class="outline-btn" id="editProfileBtn" type="button">✎ &nbsp; Edit Profile</button>
+    </section>
+
+    <section class="stats-card card">
+      <div class="stat"><strong>3</strong><span>Items Listed</span><small>Items you have posted</small></div>
+      <div class="stat"><strong id="soldStat">1</strong><span>Items Sold</span><small>Items you have sold</small></div>
+      <div class="stat"><strong>4</strong><span>Items Purchased</span><small>Items you have bought</small></div>
+      <div class="stat"><strong id="activeStat">2</strong><span>Active Listings</span><small>Currently active</small></div>
+      <div class="stat"><strong id="savedStat">2</strong><span>Saved Items</span><small>Items you saved</small></div>
+    </section>
+
+    <section class="content-card card" id="listed-items">
+      <div class="section-heading">
+        <div>
+          <h2>Items Listed</h2>
+          <p>Items you have posted on TTU Marketplace.</p>
+        </div>
+        <div class="section-actions">
+          <a class="text-btn" href="listings.html">View All →</a>
+          <a class="red-btn" id="listItemBtn" href="sell.html">＋ &nbsp; List an Item</a>
+        </div>
+      </div>
+      <div class="item-list">
+        <article class="item-row searchable" data-search="ti-84 calculator electronics">
+          <img src="assets/calculator-front.png" alt="TI-84 Plus Calculator">
+          <div class="item-main">
+            <h3>TI-84 Plus Calculator</h3>
+            <strong>$60</strong>
+            <p>▣ Listed Sep 1, 2024 &nbsp;&nbsp; ◉ 42 views</p>
+          </div>
+          <span class="status status-active">Active</span>
+          <div class="item-actions">
+            <button class="small-btn edit-item" type="button">✎ Edit</button>
+            <button class="small-btn mark-sold" type="button">✓ Mark as Sold</button>
+            <button class="dots" type="button" aria-label="More actions">⋮</button>
+          </div>
+        </article>
+        <article class="item-row searchable" data-search="desk lamp furniture dorm">
+          <img src="assets/images/lamp.jpg" alt="Desk Lamp">
+          <div class="item-main">
+            <h3>Desk Lamp</h3>
+            <strong>$15</strong>
+            <p>▣ Listed Aug 28, 2024 &nbsp;&nbsp; ◉ 27 views</p>
+          </div>
+          <span class="status status-sold">Sold</span>
+          <div class="item-actions">
+            <button class="small-btn edit-item" type="button">✎ Edit</button>
+            <button class="small-btn disabled-btn" type="button" disabled>✓ Sold</button>
+            <button class="dots" type="button" aria-label="More actions">⋮</button>
+          </div>
+        </article>
+        <article class="item-row searchable" data-search="data structures textbook computer science">
+          <img src="assets/images/textbook.jpg" alt="Data Structures Textbook">
+          <div class="item-main">
+            <h3>Data Structures Textbook</h3>
+            <strong>$40</strong>
+            <p>▣ Listed Aug 20, 2024 &nbsp;&nbsp; ◉ 15 views</p>
+          </div>
+          <span class="status status-active">Active</span>
+          <div class="item-actions">
+            <button class="small-btn edit-item" type="button">✎ Edit</button>
+            <button class="small-btn mark-sold" type="button">✓ Mark as Sold</button>
+            <button class="dots" type="button" aria-label="More actions">⋮</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-card card" id="purchased-items">
+      <div class="section-heading">
+        <div>
+          <h2>Items Purchased</h2>
+          <p>Items you have bought through TTU Marketplace.</p>
+        </div>
+        <a class="text-btn" href="listings.html">View All →</a>
+      </div>
+      <div class="item-list">
+        <article class="item-row searchable" data-search="office chair sarah furniture">
+          <img src="assets/images/chair.jpg" alt="Office Chair">
+          <div class="item-main">
+            <h3>Office Chair</h3>
+            <strong>$50</strong>
+            <p>▣ Purchased Sep 3, 2024 &nbsp; | &nbsp; Seller: Sarah M.</p>
+          </div>
+          <span class="status status-complete">Completed</span>
+          <div class="item-actions">
+            <button class="small-btn view-details" type="button" data-item="Office Chair" data-status="Completed" data-seller="Sarah M.">View Details</button>
+            <button class="dots" type="button" aria-label="More actions">⋮</button>
+          </div>
+        </article>
+        <article class="item-row searchable" data-search="mechanical keyboard alex electronics">
+          <img src="assets/images/monitor.jpg" alt="Mechanical Keyboard">
+          <div class="item-main">
+            <h3>Mechanical Keyboard</h3>
+            <strong>$80</strong>
+            <p>▣ Purchased Aug 25, 2024 &nbsp; | &nbsp; Seller: Alex R.</p>
+          </div>
+          <span class="status status-complete">Completed</span>
+          <div class="item-actions">
+            <button class="small-btn view-details" type="button" data-item="Mechanical Keyboard" data-status="Completed" data-seller="Alex R.">View Details</button>
+            <button class="dots" type="button" aria-label="More actions">⋮</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-card card" id="saved-items">
+      <div class="section-heading">
+        <div>
+          <h2>Saved Items</h2>
+          <p>Items you have saved for later.</p>
+        </div>
+        <a class="text-btn" href="listings.html">View All →</a>
+      </div>
+      <div class="item-list">
+        <article class="item-row searchable" data-search="mini fridge dorm appliance">
+          <img src="assets/images/mini-fridge.jpg" alt="Mini Fridge">
+          <div class="item-main">
+            <h3>Mini Fridge</h3>
+            <strong>$90</strong>
+            <p>Listed by: Emily T.</p>
+          </div>
+          <span class="status status-active">Active</span>
+          <div class="item-actions">
+            <a class="small-btn" href="product.html?id=9">View Listing</a>
+            <button class="heart-btn saved" type="button" aria-label="Unsave Mini Fridge" aria-pressed="true">♥</button>
+            <button class="dots" type="button" aria-label="More actions">⋮</button>
+          </div>
+        </article>
+        <article class="item-row searchable" data-search="calculus textbook math">
+          <img src="assets/textbook.png" alt="Calculus textbook">
+          <div class="item-main">
+            <h3>Calculus Early Transcendentals</h3>
+            <strong>$30</strong>
+            <p>Listed by: David K.</p>
+          </div>
+          <span class="status status-active">Active</span>
+          <div class="item-actions">
+            <a class="small-btn" href="product.html?id=5">View Listing</a>
+            <button class="heart-btn saved" type="button" aria-label="Unsave Calculus textbook" aria-pressed="true">♥</button>
+            <button class="dots" type="button" aria-label="More actions">⋮</button>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-brand">
+      <img src="assets/ttu-logo.png" alt="">
+      <div>
+        <b><span>TTU</span> MARKETPLACE</b>
+        <small>Buy. Sell. Connect. Red Raiders Together.</small>
+      </div>
+    </div>
+    <nav>
+      <a href="listings.html">About</a>
+      <a href="listings.html">Safety</a>
+      <a href="listings.html">Help</a>
+      <a href="listings.html">Contact</a>
+    </nav>
+    <div class="footer-right">◎ &nbsp; 𝕏 &nbsp; ● &nbsp; ♪ &nbsp; ▶ &nbsp;&nbsp; <b>WRECK 'EM!</b></div>
+  </footer>
+  <div class="copyright">
+    <span>© 2026 Texas Tech University. All rights reserved.</span>
+    <span>Built by Red Raiders, for Red Raiders. ♡</span>
+  </div>
+
+  <div class="modal" id="detailsModal">
+    <div class="modal-card">
+      <button class="modal-close" type="button" aria-label="Close">×</button>
+      <p class="modal-kicker">ORDER DETAILS</p>
+      <h2 id="modalItem">Item</h2>
+      <p id="modalSeller"></p>
+      <div class="timeline">
+        <div class="timeline-step">
+          <span>✓</span>
+          <div>
+            <b>Purchase Confirmed</b>
+            <small>Your purchase was accepted.</small>
+          </div>
+        </div>
+        <div class="timeline-step">
+          <span>✓</span>
+          <div>
+            <b>Meetup Scheduled</b>
+            <small>Meetup details were confirmed.</small>
+          </div>
+        </div>
+        <div class="timeline-step">
+          <span>✓</span>
+          <div>
+            <b>Completed</b>
+            <small>The transaction is complete.</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

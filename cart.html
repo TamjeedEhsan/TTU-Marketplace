@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Your TTU Marketplace shopping cart.">
+  <title>Your Cart | TTU Marketplace</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Graduate&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="cart.css">
+  <script src="utils.js" defer></script>
+  <script src="cart.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="listings.html" aria-label="TTU Marketplace home">
+      <span class="wordmark-ttu">TTU</span>
+      <span class="wordmark-marketplace">MARKETPLACE</span>
+    </a>
+    <nav aria-label="Main navigation">
+      <a href="listings.html">Browse</a>
+      <a href="sell.html">Sell</a>
+      <button class="icon-button" type="button" aria-label="Saved listings">
+        <svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z"/></svg>
+      </button>
+      <a class="cart-nav active" href="cart.html" aria-label="Shopping cart">
+        <svg viewBox="0 0 24 24"><circle cx="9" cy="20" r="1"/><circle cx="19" cy="20" r="1"/><path d="M3 4h2l2.4 11h11.4l2-8H6"/></svg>
+        <span id="headerCartCount">0</span>
+      </a>
+      <a class="avatar" href="profile.html" aria-label="Your profile">NS</a>
+    </nav>
+  </header>
+
+  <main class="cart-shell">
+    <a class="back-link" href="listings.html"><span>←</span> Continue browsing</a>
+
+    <div class="cart-heading">
+      <div><p>YOUR SAVED SELECTIONS</p><h1>Your cart</h1></div>
+      <span id="itemHeading">0 items</span>
+    </div>
+
+    <div class="cart-layout" id="cartLayout">
+      <section class="cart-items" id="cartItems" aria-label="Items in your cart"></section>
+
+      <aside class="summary-card" id="summaryCard">
+        <p class="summary-label">ORDER SUMMARY</p>
+        <h2>Ready to check out?</h2>
+        <div class="summary-rows">
+          <div><span>Items (<b id="summaryItemCount">0</b>)</span><strong id="subtotal">$0.00</strong></div>
+          <div><span>Marketplace fee</span><strong>$0.00</strong></div>
+          <div><span>Campus pickup</span><strong>FREE</strong></div>
+        </div>
+        <div class="total-row"><span>Total</span><strong id="total">$0.00</strong></div>
+        <a class="checkout-button" id="checkoutLink" href="payment.html">Proceed to checkout <span>→</span></a>
+        <a class="continue-link" href="listings.html">Continue shopping</a>
+        <div class="safe-box">
+          <svg viewBox="0 0 24 24"><path d="M12 2 21 6v7c0 5-3.5 8.2-9 10-5.5-1.8-9-5-9-10V6Z"/><path d="m8.5 12 2.3 2.3 4.8-5"/></svg>
+          <div><strong>Meet safely on campus</strong><p>Inspect every item before completing an in-person payment.</p></div>
+        </div>
+      </aside>
+    </div>
+
+    <section class="empty-cart hidden" id="emptyCart">
+      <div class="empty-icon"><svg viewBox="0 0 24 24"><circle cx="9" cy="20" r="1"/><circle cx="19" cy="20" r="1"/><path d="M3 4h2l2.4 11h11.4l2-8H6"/></svg></div>
+      <p>YOUR CART IS EMPTY</p>
+      <h2>Find something worth bringing home.</h2>
+      <a href="listings.html">Browse marketplace <span>→</span></a>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
