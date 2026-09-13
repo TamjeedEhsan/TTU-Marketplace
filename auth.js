@@ -59,3 +59,14 @@ async function getCurrentUser() {
 
     return user;
 }
+
+async function requireAuth() {
+  const user = await getCurrentUser();
+
+  if (!user) {
+    window.location.href = "index.html";
+    return null;
+  }
+
+  return user;
+}

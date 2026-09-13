@@ -58,10 +58,9 @@ function money(amount) {
 }
 
 async function loadCheckout() {
-  currentUser = await getCurrentUser();
+  currentUser = await requireAuth();
 
   if (!currentUser) {
-    window.location.href = "index.html";
     return;
   }
 

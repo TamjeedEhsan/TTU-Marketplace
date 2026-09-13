@@ -115,10 +115,9 @@ function formatMemberSince(date) {
 }
 
 async function loadProfile() {
-  currentUser = await getCurrentUser();
+  currentUser = await requireAuth();
 
   if (!currentUser) {
-    window.location.href = "index.html";
     return;
   }
 

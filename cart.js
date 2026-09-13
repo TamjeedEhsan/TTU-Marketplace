@@ -41,10 +41,9 @@ function getInitials(name) {
 }
 
 async function loadCart() {
-  currentUser = await getCurrentUser();
+  currentUser = await requireAuth();
 
   if (!currentUser) {
-    window.location.href = "index.html";
     return;
   }
 

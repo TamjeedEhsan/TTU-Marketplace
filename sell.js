@@ -1,3 +1,15 @@
+let currentUser = null;
+
+async function initializeSellPage() {
+  currentUser = await requireAuth();
+
+  if (!currentUser) {
+    return;
+  }
+}
+
+initializeSellPage();
+
 const form = document.getElementById("listing-form");
 const photoInput = document.getElementById("photo-input");
 const previewSlots = document.querySelectorAll(".preview-slot");
@@ -81,13 +93,6 @@ form.addEventListener("submit", async (event) => {
     return;
   }
 
-  const user = await getCurrentUser();
-
-  if (!user) {
-    showError("You must be logged in to list an item.");
-    return;
-  }
-
   const submitButton = form.querySelector(".list-btn");
 
   submitButton.disabled = true;
@@ -103,7 +108,7 @@ form.addEventListener("submit", async (event) => {
       imageFile.name.split(".").pop();
 
     const fileName =
-      `${user.id}/${Date.now()}.${fileExtension}`;
+      `${currentUser.id}/${Date.now()}.${fileExtension}`;
 
     const { error: uploadError } =
       await supabaseClient.storage
@@ -133,7 +138,7 @@ form.addEventListener("submit", async (event) => {
   const { data, error } = await supabaseClient
     .from("listings")
     .insert({
-      seller_id: user.id,
+      seller_id: currentUser.id,
       title: title,
       description: description,
       price: price,
