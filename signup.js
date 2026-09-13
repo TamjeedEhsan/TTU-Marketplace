@@ -43,14 +43,19 @@ signupForm.addEventListener("submit", async (event) => {
     }
 
 
-    signupMessage.textContent =
-        "Account created successfully!";
+  if (data.session) {
+  signupMessage.textContent = "Account created successfully!";
 
+  setTimeout(() => {
+    window.location.href = "listings.html";
+  }, 800);
+} else {
+  signupMessage.textContent =
+    "Account created! Check your TTU email and confirm your account before logging in.";
 
-    setTimeout(() => {
-
-        window.location.href = "listings.html";
-
-    }, 800);
+  setTimeout(() => {
+    window.location.href = "index.html";
+  }, 3000);
+}
 
 });

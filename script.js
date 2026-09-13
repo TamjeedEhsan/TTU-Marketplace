@@ -88,6 +88,19 @@ form.addEventListener("submit", async (event) => {
 
 });
 
+// Show message after email confirmation
+const urlParams = new URLSearchParams(window.location.search);
+
+if (urlParams.get("confirmed") === "true") {
+  showToast("Email confirmed! You can now log in.");
+
+  window.history.replaceState(
+    {},
+    document.title,
+    window.location.pathname
+  );
+}
+
 document.querySelector("#googleButton").addEventListener("click", () => {
   showToast("Connect this button to TTU Google authentication.");
 });
