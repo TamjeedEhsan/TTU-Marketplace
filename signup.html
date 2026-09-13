@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Matador Marketplace | Sign Up</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase.js"></script>
+    <script src="auth.js"></script>
+
+    <!-- Signup logic -->
+    <script src="signup.js" defer></script>
+</head>
+
+<body>
+
+    <main class="login-page">
+
+        <section class="campus-panel"></section>
+
+        <section class="login-panel">
+
+            <article class="login-card">
+
+                <header class="card-header">
+
+                    <img
+                        class="ttu-logo"
+                        src="assets/ttu-logo.png"
+                        alt="Texas Tech University logo"
+                    >
+
+                    <h1>Create Account</h1>
+
+                    <p>JOIN THE TTU MARKETPLACE</p>
+
+                </header>
+
+
+                <form id="signupForm">
+
+                    <div class="form-group">
+
+                        <label for="fullName">FULL NAME</label>
+
+                        <div class="input-wrap">
+
+                            <input
+                                id="fullName"
+                                type="text"
+                                placeholder="John Doe"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="signupEmail">TTU EMAIL</label>
+
+                        <div class="input-wrap">
+
+                            <input
+                                id="signupEmail"
+                                type="email"
+                                placeholder="name@ttu.edu"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="signupPassword">PASSWORD</label>
+
+                        <div class="input-wrap">
+
+                            <input
+                                id="signupPassword"
+                                type="password"
+                                placeholder="Create a password"
+                                minlength="6"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        class="login-button"
+                        type="submit"
+                    >
+                        Create Account →
+                    </button>
+
+                    <p
+                        id="signupMessage"
+                        class="field-error"
+                    ></p>
+
+
+                    <p class="signup-copy">
+
+                        Already have an account?
+
+                        <a href="index.html">
+                            Log in
+                        </a>
+
+                    </p>
+
+                </form>
+
+            </article>
+
+        </section>
+
+    </main>
+
+</body>
+</html>

@@ -42,9 +42,64 @@ function saveFavorites() {
   localStorage.setItem("ttuFavorites", JSON.stringify([...favorites]));
 }
 
+let products = [];
+
 function getAllProducts() {
-  const userListings = JSON.parse(localStorage.getItem("ttuUserListings") || "[]");
-  return [...userListings, ...products];
+  return products;
+}
+
+async function loadListings() {
+  const { data, error } = await supabaseClient
+    .from("listings")
+    .select("*")
+    .eq("status", "active")
+    .order("created_at", { ascending: false });
+
+  if (error) {
+    console.error("Could not load listings:", error);
+    emptyEl.textContent = "Could not load listings.";
+    emptyEl.hidden = false;
+    return;
+  }
+
+  products = data.map((item) => ({
+    id: item.id,
+    title: item.title,
+    price: Number(item.price),
+    category: item.category,
+    condition: item.condition,
+    location: item.location || "TTU",
+    description: item.description || "",
+    image: item.image_url || "assets/images/backpack.jpg",
+    createdAt: item.created_at,
+    time: formatListingTime(item.created_at)
+  }));
+
+  render();
+}
+
+function formatListingTime(createdAt) {
+  const created = new Date(createdAt);
+  const now = new Date();
+
+  const difference = now - created;
+  const minutes = Math.floor(difference / 60000);
+  const hours = Math.floor(difference / 3600000);
+  const days = Math.floor(difference / 86400000);
+
+  if (minutes < 1) {
+    return "Just now";
+  }
+
+  if (minutes < 60) {
+    return `${minutes}m ago`;
+  }
+
+  if (hours < 24) {
+    return `${hours}h ago`;
+  }
+
+  return `${days}d ago`;
 }
 
 function getFilteredProducts() {
@@ -73,7 +128,9 @@ function getFilteredProducts() {
   } else if (state.sort === "price-desc") {
     list = list.slice().sort((a, b) => b.price - a.price);
   } else {
-    list = list.slice().sort((a, b) => a.hoursAgo - b.hoursAgo);
+    list = list
+    .slice()
+    .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
   }
 
   return list;
@@ -196,4 +253,4 @@ grid.addEventListener("click", (event) => {
   saveFavorites();
 });
 
-render();
+loadListings();

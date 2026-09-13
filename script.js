@@ -56,13 +56,36 @@ passwordInput.addEventListener("input", () => {
   if (passwordError.textContent) validatePassword();
 });
 
-form.addEventListener("submit", (event) => {
+form.addEventListener("submit", async (event) => {
+
   event.preventDefault();
+
   const emailIsValid = validateEmail();
   const passwordIsValid = validatePassword();
 
   if (!emailIsValid || !passwordIsValid) return;
-  window.location.href = "listings.html";
+
+  const email = emailInput.value.trim().toLowerCase();
+  const password = passwordInput.value;
+
+  const { data, error } = await logIn(email, password);
+
+  if (error) {
+    passwordError.textContent = error.message;
+    return;
+  }
+
+  if (!data || !data.session) {
+    passwordError.textContent = "Login failed. No session was created.";
+    return;
+  }
+
+  showToast("Login successful!");
+
+  setTimeout(() => {
+    window.location.href = "listings.html";
+  }, 500);
+
 });
 
 document.querySelector("#googleButton").addEventListener("click", () => {
@@ -76,5 +99,23 @@ document.querySelector("#forgotLink").addEventListener("click", (event) => {
 
 document.querySelector("#createLink").addEventListener("click", (event) => {
   event.preventDefault();
-  showToast("Connect this link to your account-creation page.");
+  window.location.href = "signup.html";
 });
+
+
+
+// Test the Supabase connection
+async function testSupabaseConnection() {
+    const { data, error } = await supabaseClient
+        .from("listings")
+        .select("*");
+
+    if (error) {
+        console.error("Supabase connection error:", error);
+    } else {
+        console.log("Supabase connected successfully!");
+        console.log("Listings:", data);
+    }
+}
+
+testSupabaseConnection();
